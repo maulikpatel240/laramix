@@ -1,0 +1,253 @@
+.btn-primary,
+.btn-success,
+.btn-danger,
+.btn-secondary {
+    color: #fff !important;
+}
+
+// body{
+//     background-color: #131313;
+// }
+// .btn.btn-primary{
+//     background-color: $primaryColor;
+// }
+.form-inline {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.form-inline .form-check {
+    width: 100%;
+}
+
+.navbar {
+    padding: 0.5rem 0.5rem;
+}
+
+.navbar-expand .navbar-nav .nav-link {
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+.kv-panel-before {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.btn-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.preloader {
+    opacity: 0.8;
+    background-color: #131313;
+}
+
+.preloader5 {
+    text-align: center;
+    left: 0;
+    right: 0;
+    top: 50%;
+    position: absolute;
+}
+
+.preloader5 .circle-5 {
+    display: inline-block;
+    padding: 11px;
+    margin: 0 0.6em;
+    background: #fff;
+    border-radius: 100%;
+}
+
+.preloader5 .l {
+    -webkit-animation: pulse 1s infinite linear;
+    animation: pulse 1s infinite linear;
+}
+
+.preloader5 .m {
+    -webkit-animation: pulse 1s infinite linear;
+    animation: pulse 1s infinite linear;
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+}
+
+.preloader5 .r {
+    -webkit-animation: pulse 1s infinite linear;
+    animation: pulse 1s infinite linear;
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+}
+
+@-webkit-keyframes pulse {
+    10% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    20% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    30% {
+        -webkit-transform: scale(1.7);
+        transform: scale(1.7);
+    }
+    50% {
+        -webkit-transform: scale(1.7);
+        transform: scale(1.7);
+    }
+    70% {
+        -webkit-transform: scale(1.7);
+        transform: scale(1.7);
+    }
+    80% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    90% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    10% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    20% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    30% {
+        -webkit-transform: scale(1.7);
+        transform: scale(1.7);
+    }
+    50% {
+        -webkit-transform: scale(1.7);
+        transform: scale(1.7);
+    }
+    70% {
+        -webkit-transform: scale(1.7);
+        transform: scale(1.7);
+    }
+    80% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    90% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+.theme-loader {
+    height: 100%;
+    width: 100%;
+    background-color: #131313;
+    position: fixed;
+    z-index: 999999;
+    top: 0;
+}
+
+.theme_loader_applymodal {
+    height: 100%;
+    width: 100%;
+    background-color: #131313;
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    opacity: 0.7;
+    left: 0px;
+    border-radius: 4px;
+}
+
+.theme_loader_div {
+    height: 100%;
+    width: 100%;
+    background-color: #131313;
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    opacity: 0.7;
+    left: 0px;
+    border-radius: 0px 0px 4px 4px;
+}
+
+.theme_loader_fix {
+    height: 100%;
+    width: 100%;
+    background-color: #131313;
+    position: fixed;
+    z-index: 1060;
+    top: 0;
+    opacity: 0.7;
+    left: 0px;
+    border-radius: 0px 0px 4px 4px;
+}
+
+#modalContent {
+    min-height: 100px;
+}
+
+.kv-grid-loading {
+    position: relative;
+    overflow: hidden;
+    max-height: 100%;
+}
+
+.kv-grid-loading .kv-loader-overlay {
+    display: block;
+}
+
+.kv-loader-overlay {
+    background: transparent;
+    position: absolute;
+    opacity: 0.6;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.kv-grid-loading .card,
+.kv-grid-loading .table {
+    background: transparent;
+    opacity: 0.6;
+}
+
+.kv-loader {
+    position: absolute;
+    // background: #fff url("../../public/img/loading.gif") center center no-repeat !important;
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+}
+
+.kv-panel-after {
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.kv-panel-pager {
+    height: 34px;
+}
+
+.card .kv-grid-table {
+    margin: 0;
+}
