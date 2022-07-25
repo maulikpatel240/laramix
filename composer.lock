@@ -4,8 +4,51 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b1ea6bda34aa67e399720b2da4b20215",
+    "content-hash": "eb6211ad184eca81a680630bb02337d5",
     "packages": [
+        {
+            "name": "almasaeed2010/adminlte",
+            "version": "dev-v4-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ColorlibHQ/AdminLTE.git",
+                "reference": "bf5e27f1a4fa4e72cc4eaf3336ad9eff8a07947a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ColorlibHQ/AdminLTE/zipball/bf5e27f1a4fa4e72cc4eaf3336ad9eff8a07947a",
+                "reference": "bf5e27f1a4fa4e72cc4eaf3336ad9eff8a07947a",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Colorlib"
+                }
+            ],
+            "description": "AdminLTE - admin control panel and dashboard that's based on Bootstrap 4",
+            "homepage": "https://adminlte.io/",
+            "keywords": [
+                "JS",
+                "admin",
+                "back-end",
+                "css",
+                "less",
+                "responsive",
+                "template",
+                "theme",
+                "web"
+            ],
+            "support": {
+                "issues": "https://github.com/ColorlibHQ/AdminLTE/issues",
+                "source": "https://github.com/ColorlibHQ/AdminLTE/tree/v4-dev"
+            },
+            "time": "2022-07-12T15:12:05+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.9.3",
@@ -9452,7 +9495,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "almasaeed2010/adminlte": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

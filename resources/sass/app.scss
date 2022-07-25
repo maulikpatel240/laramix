@@ -2,19 +2,48 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito");
 
 // Variables
-@import "variables";
+// @import "variables";
+
+// // Bootstrap
+// @import "~bootstrap/scss/bootstrap";
+
+// @import "~bootstrap/scss/bootstrap-utilities";
+// //Generate utilites for Cursor
+// $utilities: map-merge(
+//     $utilities,
+//     (
+//         "cursor": (
+//             property: cursor,
+//             values: auto default pointer wait text move help not-allowed,
+//         ),
+//     )
+// );
+
+/*!
+ *   AdminLTE v4.0.0-alpha.1
+ *   Author: Colorlib
+ *   Website: AdminLTE.io <https://adminlte.io>
+ *   License: Open source - MIT <https://opensource.org/licenses/MIT>
+ */
 
 // Bootstrap
+// ---------------------------------------------------
+@import "~bootstrap/scss/functions";
+// @import "./../../vendor/almasaeed2010/adminlte/src/scss/bootstrap-variables"; // little modified are here
+@import "~bootstrap/scss/variables";
+@import "./../../vendor/almasaeed2010/adminlte/src/scss/custom-utilities";
 @import "~bootstrap/scss/bootstrap";
 
-@import "~bootstrap/scss/bootstrap-utilities";
-//Generate utilites for Cursor
-$utilities: map-merge(
-    $utilities,
-    (
-        "cursor": (
-            property: cursor,
-            values: auto default pointer wait text move help not-allowed,
-        ),
-    )
-);
+// Variables and Mixins
+// ---------------------------------------------------
+@import "./../../vendor/almasaeed2010/adminlte/src/scss/variables";
+@import "./../../vendor/almasaeed2010/adminlte/src/scss/mixins";
+
+// AdiminLTE Parts
+// ---------------------------------------------------
+@import "./../../vendor/almasaeed2010/adminlte/src/scss/parts/core";
+@import "./../../vendor/almasaeed2010/adminlte/src/scss/parts/components";
+@import "./../../vendor/almasaeed2010/adminlte/src/scss/parts/extra-components";
+@import "./../../vendor/almasaeed2010/adminlte/src/scss/parts/pages";
+@import "./../../vendor/almasaeed2010/adminlte/src/scss/parts/miscellaneous";
+

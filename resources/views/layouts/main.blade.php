@@ -22,6 +22,9 @@ $action = $getActionName;
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
+        integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
 
     <!-- plugin css-->
     <link href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}" rel="stylesheet" type="text/css">
@@ -30,8 +33,8 @@ $action = $getActionName;
     <link href="{{ asset('plugins/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css">
     @yield('pluginsCss')
     <!-- Styles -->
-    <link href="{{ asset('css/material-kit.css') }}" rel="stylesheet" type="text/css">
-    {{-- <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css"> --}}
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('plugins/sweetalert2/css/sweetalert2.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('plugins/summernote/summernote-bs5.css') }}" rel="stylesheet" type="text/css">
     <!-- common script-->
@@ -136,73 +139,76 @@ $action = $getActionName;
         <div class="wrapper">
             {{-- @include('layouts.loader') --}}
             <!-- Navbar -->
-            <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-                <!-- Left navbar links -->
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
-                                class="fas fa-bars"></i></a>
-                    </li>
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a href="" class="nav-link">Home</a>
-                    </li>
-                </ul>
-                <!-- Right navbar links -->
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" data-bs-toggle="dropdown" href="#">
-                            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32"
-                                class="rounded-circle">
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end">
-                            <span class="dropdown-header fw-bold">{{ $user->first_name . ' ' . $user->last_name }}</span>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('admin.logout') }}"
-                                onclick="event.preventDefault();
-                      document.getElementById('logout-form').submit();">
-                                <i class="fas fa-sign-out-alt mr-2"></i> {{ __('Logout') }}
-                            </a>
-                            <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-            <!-- /.navbar -->
+            <nav class="main-header navbar navbar-expand navbar-light">
+                <div class="container-fluid">
+                    <!-- Start navbar links -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" data-lte-toggle="sidebar-full" href="#" role="button"><i
+                                    class="fas fa-bars"></i></a>
+                        </li>
+                        <li class="nav-item d-none d-md-block">
+                            <a href="#" class="nav-link">Home</a>
+                        </li>
+                    </ul>
 
+                    <!-- End navbar links -->
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown user-menu">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <img src="https://github.com/mdo.png" class="user-image img-circle shadow" alt="User Image">
+                                <span class="d-none d-md-inline">Alexander Pierce</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+                                <!-- User image -->
+                                <li class="user-header bg-primary">
+                                    <img src="../../assets/img/user2-160x160.jpg" class="img-circle shadow"
+                                        alt="User Image">
+                                    <p>
+                                        {{ $user->first_name . ' ' . $user->last_name }}
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    <a class="btn btn-default btn-flat float-end" href="{{ route('admin.logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class="fas fa-sign-out-alt mr-2"></i> {{ __('Sign out') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST"
+                                        class="d-none">
+                                        @csrf
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- TODO tackel in v4.1 -->
+                        <!-- <li class="nav-item">
+                                                                            <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                                                                            <i class="fas fa-expand-arrows-alt"></i>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+                                                                            <i class="fas fa-th-large"></i>
+                                                                            </a>
+                                                                        </li> -->
+                    </ul>
+                </div>
+            </nav>
             <!-- Main Sidebar Container -->
-            <aside class="main-sidebar sidebar-dark-primary elevation-4">
-                <!-- Brand Logo -->
-                <a href="" class="brand-link">
-                    <img src="{{ url('/img/AdminLTELogo.png') }}" alt=""
-                        class="brand-image img-circle elevation-3" style="opacity: .8">
-                    <span class="brand-text font-weight-light">{{ config('app.name') }}</span>
-                </a>
+            <aside class="main-sidebar sidebar-bg-dark sidebar-color-primary shadow">
+                <div class="brand-container">
+                    <a href="javascript:;" class="brand-link">
+                        <img src="{{ url('/img/AdminLTELogo.png') }}" alt="" class="brand-image opacity-80 shadow">
+                        <span class="brand-text fw-light">{{ config('app.name') }}</span>
+                    </a>
+                    <a class="pushmenu mx-1" data-lte-toggle="sidebar-mini" href="javascript:;" role="button"><i
+                            class="fas fa-angle-double-left"></i></a>
+                </div>
                 <!-- Sidebar -->
                 <div class="sidebar">
-                    <!-- Sidebar user (optional) -->
-                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                        <div class="image">
-                            <img src="{{ url('/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="">
-                        </div>
-                        <div class="info">
-                            <a href="" class="d-block">{{ $user->first_name . ' ' . $user->last_name }}</a>
-                        </div>
-                    </div>
-
-                    <!-- SidebarSearch Form -->
-                    <div class="form-inline">
-                        <div class="input-group" data-widget="sidebar-search">
-                            <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                                aria-label="Search">
-                            <button class="input-group-text btn btn-sidebar">
-                                <i class="fas fa-search fa-fw"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Sidebar Menu -->
                     <nav class="mt-2">
                         <?php
                         // $modules = Modules::where(['menu_id' => 0, 'parent_menu_id' => 0, 'parent_submenu_id' => 0])->where('title', '!=', '')->get();
@@ -252,7 +258,7 @@ $action = $getActionName;
                                         if ($url_childmenu && $controller == $value_submenu['controller'] && $action == $value_submenu['action']) {
                                             $active_sidemenu = 'active';
                                             $active_childmenu = 'active';
-                                            $nav_open_sidemenu = 'menu-is-opening menu-open';
+                                            $nav_open_sidemenu = 'menu-open menu-is-open';
                                         }
                                         $iconchild = '';
                                         $childInMenu = '';
@@ -261,31 +267,31 @@ $action = $getActionName;
                                             ->orderBy('submenu_position', 'asc')
                                             ->get()
                                             ->toArray();
-                                        if ($subsubmenu) {
-                                            $childInMenu .= '<ul class="nav nav-treeview">';
-                                            foreach ($subsubmenu as $key_subsubmenu => $value_subsubmenu) {
-                                                if ($value_subsubmenu['controller'] && $value_subsubmenu['action'] == 'index') {
-                                                    $url_childInmenu = $value_subsubmenu['controller'];
-                                                } elseif ($value_subsubmenu['controller'] && $value_subsubmenu['action'] != 'index') {
-                                                    $url_childInmenu = $value_subsubmenu['controller'] . '/' . $value_subsubmenu['action'];
-                                                } else {
-                                                    $url_childInmenu = false;
-                                                }
-                                                $active_childInmenu = '';
-                                                if ($url_childInmenu && $controller == $value_subsubmenu['controller'] && $action == $value_subsubmenu['action']) {
-                                                    $active_sidemenu = 'active';
-                                                    $active_childmenu = 'active';
-                                                    $active_childInmenu = 'active';
-                                                    $nav_open_sidemenu = 'menu-is-opening menu-open';
-                                                }
-                                                if (!empty(checkaccess($value_subsubmenu['action'], $value_subsubmenu['controller']))) {
-                                                    $childInMenutitle = '<i class="nav-icon ' . $value_subsubmenu['icon'] . '"></i><p>' . $value_subsubmenu['title'] . '</p>';
-                                                    $childInMenu .= '<li class="nav-item"><a href="' . url('/admin') . '/' . $url_childInmenu . '" class="nav-link ' . $active_childInmenu . '">' . $childInMenutitle . '</a></li>';
-                                                }
-                                            }
-                                            $childInMenu .= '</ul>';
-                                            $iconchild .= '<i class="fas fa-angle-left right"></i>';
-                                        }
+                                        // if ($subsubmenu) {
+                                        //     $childInMenu .= '<ul class="nav nav-treeview">';
+                                        //     foreach ($subsubmenu as $key_subsubmenu => $value_subsubmenu) {
+                                        //         if ($value_subsubmenu['controller'] && $value_subsubmenu['action'] == 'index') {
+                                        //             $url_childInmenu = $value_subsubmenu['controller'];
+                                        //         } elseif ($value_subsubmenu['controller'] && $value_subsubmenu['action'] != 'index') {
+                                        //             $url_childInmenu = $value_subsubmenu['controller'] . '/' . $value_subsubmenu['action'];
+                                        //         } else {
+                                        //             $url_childInmenu = false;
+                                        //         }
+                                        //         $active_childInmenu = '';
+                                        //         if ($url_childInmenu && $controller == $value_subsubmenu['controller'] && $action == $value_subsubmenu['action']) {
+                                        //             $active_sidemenu = 'active';
+                                        //             $active_childmenu = 'active';
+                                        //             $active_childInmenu = 'active';
+                                        //             $nav_open_sidemenu = 'menu-open menu-is-open';
+                                        //         }
+                                        //         if (!empty(checkaccess($value_subsubmenu['action'], $value_subsubmenu['controller']))) {
+                                        //             $childInMenutitle = '<i class="nav-icon ' . $value_subsubmenu['icon'] . '"></i><p>' . $value_subsubmenu['title'] . '</p>';
+                                        //             $childInMenu .= '<li class="nav-item"><a href="' . url('/admin') . '/' . $url_childInmenu . '" class="nav-link ' . $active_childInmenu . '">' . $childInMenutitle . '</a></li>';
+                                        //         }
+                                        //     }
+                                        //     $childInMenu .= '</ul>';
+                                        //     $iconchild .= '<i class="end fas fa-angle-right"></i>';
+                                        // }
                                         if (!empty(checkaccess($value_submenu['action'], $value_submenu['controller']))) {
                                             $childMenutitle = '<i class="nav-icon ' . $value_submenu['icon'] . '"></i><p>' . $value_submenu['title'] . $iconchild . '</p>';
                                             $childMenu .= '<li class="nav-item"><a href="' . url('/admin') . '/' . $url_childmenu . '" class="nav-link ' . $active_childmenu . '">' . $childMenutitle . '</a>' . $childInMenu . '</li>';
@@ -293,11 +299,11 @@ $action = $getActionName;
                                         }
                                     }
                                     $childMenu .= '</ul>';
-                                    $icon .= '<i class="fas fa-angle-left right"></i>';
+                                    $icon .= '<i class="end fas fa-angle-right"></i>';
                                 } else {
                                     if ($url && $controller == $value_menu['controller'] && $action == $value_menu['action']) {
                                         $active_sidemenu = 'active';
-                                        $nav_open_sidemenu = 'menu-is-opening menu-open';
+                                        $nav_open_sidemenu = 'menu-open menu-is-open';
                                     }
                                 }
                                 // echo checkaccess($value_menu['action'], $value_menu['controller']);
@@ -326,10 +332,10 @@ $action = $getActionName;
                             {!! $sideMenu !!}
                         </ul>
                     </nav>
-                    <!-- /.sidebar-menu -->
                 </div>
                 <!-- /.sidebar -->
             </aside>
+            <!-- Main Sidebar Container -->
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
@@ -357,14 +363,16 @@ $action = $getActionName;
         <!-- ./wrapper -->
         @stack('before-scripts')
         <!-- common js -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+
+        <script src="{{ asset('js/bootstrap.bundle.min.js') }}" defer></script>
         <script src="{{ asset('js/jquery.form.min.js') }}" defer></script>
-        <script src="{{ asset('js/AdminLTE.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/adminlte.min.js') }}" type="text/javascript"></script>
         <!-- plugin js -->
         <script type="text/javascript" src="{{ asset('plugins/jsvalidation/jsvalidation.js') }}"></script>
         <script src="{{ asset('plugins/dependent-dropdown/js/dependent-dropdown.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('plugins/jquery-pjax/jquery.pjax.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('plugins/sweetalert2/js/sweetalert2.all.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('plugins/sweetalert2/sweetalert2.all.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('plugins/inputmask/jquery.inputmask.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('plugins/handlebars/handlebars.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}" type="text/javascript"></script>
@@ -374,7 +382,7 @@ $action = $getActionName;
         <script src="{{ asset('js/cloneData.js') }}" type="text/javascript"></script>
         <script src="{{ asset('js/grid.js') }}" type="text/javascript"></script>
         <script src="{{ asset('js/sweetalert2.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('js/demo.js') }}" type="text/javascript"></script>
+        {{-- <script src="{{ asset('js/demo.js') }}" type="text/javascript"></script> --}}
         <script src="{{ asset('js/myfunction.js') }}" type="text/javascript"></script>
         @stack('after-scripts')
         @yield('pagescript')
@@ -390,7 +398,25 @@ $action = $getActionName;
             // Inputmask().mask(document.querySelectorAll("input"));
         });
     </script>
-
+    <script>
+        const SELECTOR_SIDEBAR = '.sidebar'
+        const Default = {
+            scrollbarTheme: 'os-theme-light',
+            scrollbarAutoHide: 'leave'
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            if (typeof OverlayScrollbars !== 'undefined') {
+                OverlayScrollbars(document.querySelectorAll(SELECTOR_SIDEBAR), {
+                    className: Default.scrollbarTheme,
+                    sizeAutoCapable: true,
+                    scrollbars: {
+                        autoHide: Default.scrollbarAutoHide,
+                        clickScrolling: true
+                    }
+                })
+            }
+        })
+    </script>
     @stack('grid_js')
 </body>
 

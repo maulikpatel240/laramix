@@ -26,9 +26,14 @@
     "dependencies": {
         "dependent-dropdown": "^1.4.9",
         "dotenv": "^16.0.1",
+        "handlebars": "^4.7.7",
+        "icheck-bootstrap": "^3.0.1",
         "inputmask": "^5.0.7",
         "jquery": "^3.6.0",
         "jquery-pjax": "^2.0.1",
-        "multiform": "^0.1.0"
+        "multiform": "^0.1.0",
+        "overlayscrollbars": "^1.13.3",
+        "summernote": "^0.8.20",
+        "sweetalert2": "^11.4.24"
     }
 }

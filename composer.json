@@ -15,7 +15,8 @@
         "laravel/ui": "^3.4",
         "laravelcollective/html": "^6.3",
         "orangehill/iseed": "^3.0",
-        "proengsoft/laravel-jsvalidation": "^4.7"
+        "proengsoft/laravel-jsvalidation": "^4.7",
+        "almasaeed2010/adminlte": "dev-v4-dev"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

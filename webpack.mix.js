@@ -13,10 +13,27 @@ require("dotenv").config();
 
 mix.js("resources/js/app.js", "public/js")
     .react()
+    //Bootstrap+adminlte+jquery
     .sass("resources/sass/app.scss", "public/css")
-    .sass("resources/sass/styles.scss", "public/css")
-    .sass("resources/sass/material-kit.scss", "public/css")
     .js("resources/assets/js/jquery.js", "public/js")
+    .copyDirectory("resources/assets/js/adminlte", "public/js")
+    .copyDirectory(
+        "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+        "public/js"
+    )
+    //extra
+    // .sass("resources/sass/material-kit.scss", "public/css")
+    // .sass("vendor/almasaeed2010/adminlte/src/scss/adminlte.scss", "public/css")
+    .sass("resources/sass/styles.scss", "public/css")
+    //overlayscrollbars
+    .copy(
+        "node_modules/overlayscrollbars/js/OverlayScrollbars.min.js",
+        "public/plugins/overlayscrollbars/js/OverlayScrollbars.min.js"
+    )
+    .copy(
+        "node_modules/overlayscrollbars/css/OverlayScrollbars.min.css",
+        "public/plugins/overlayscrollbars/css/OverlayScrollbars.min.css"
+    )
     //jquery-form
     .copy("vendor/jquery-form/form/dist/jquery.form.min.js", "public/js")
     //jquery-pjax
@@ -42,16 +59,31 @@ mix.js("resources/js/app.js", "public/js")
         "resources/assets/jsvalidation/",
         "public/plugins/jsvalidation"
     )
+    //icheck-bootstrap
+    .copyDirectory(
+        "node_modules/icheck-bootstrap/",
+        "public/plugins/icheck-bootstrap"
+    )
+    //sweetalert2
+    .copyDirectory(
+        "node_modules/sweetalert2/dist/",
+        "public/plugins/sweetalert2"
+    )
+    //summernote
+    .copyDirectory("node_modules/summernote/dist/", "public/plugins/summernote")
     //input mask
     .copyDirectory("node_modules/inputmask/dist/", "public/plugins/inputmask")
     //cloneData
     .copy("resources/assets/cloneData/cloneData.js", "public/js")
+    //handlebars
+    .copyDirectory("node_modules/handlebars/dist/", "public/plugins/handlebars")
     //other
     .copy("resources/assets/js/plugins/grid.js", "public/js")
+    .copy("resources/assets/js/plugins/sweetalert2.js", "public/js")
     // .js("resources/assets/js/library/AdminLTE.js", "public/js")
     // .copy("resources/assets/js/library/adminlte.min.js", "public/js")
     // .copy("resources/assets/js/library/demo.js", "public/js")
-    .copy("resources/assets/js/material-kit.min.js", "public/js")
+    // .copy("resources/assets/js/material-kit.min.js", "public/js")
     .copy("resources/assets/js/plugins/myfunction.js", "public/js")
     .webpackConfig({
         devServer: {
