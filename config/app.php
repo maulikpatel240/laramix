@@ -197,7 +197,7 @@ return [
         App\Providers\ModalServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
         Orangehill\Iseed\IseedServiceProvider::class,
-        // Maatwebsite\Excel\ExcelServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
 
@@ -215,7 +215,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Modal' => App\BsModal\ModalFacade::class,
-        // 'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ])->toArray(),
 
 ];

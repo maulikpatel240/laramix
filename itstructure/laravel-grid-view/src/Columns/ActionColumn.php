@@ -78,7 +78,6 @@ class ActionColumn extends BaseColumn
                     $this->fillActionObjects(new $type['class']($type));
                 }
             }
-
         }
     }
 

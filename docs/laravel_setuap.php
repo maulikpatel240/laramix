@@ -26,6 +26,7 @@ cache:clearCommand
 php artisan cache:clear
 php artisan route:cache
 php artisan config:cache
+php artisan view:clear
 
 Create Migrate table
 php artisan make:migration create_salon_companies_table

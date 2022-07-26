@@ -13,8 +13,7 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
 
     <!-- Styles -->
@@ -28,9 +27,7 @@
 <body class="hold-transition login-page">
     @yield('content')
     @stack('before-scripts')
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <script src="{{ asset('js/bootstrap.bundle.min.js') }}" defer></script>
+    <script src="{{ asset('js/main.js') }}" defer></script>
     <script src="{{ asset('js/jquery.form.min.js') }}" defer></script>
     <script type="text/javascript" src="{{ asset('plugins/jsvalidation/jsvalidation.js') }}"></script>
     <script src="{{ asset('js/adminlte.min.js') }}" type="text/javascript"></script>

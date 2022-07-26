@@ -25,11 +25,6 @@ class Grid
     const INIT_ROWS_PER_PAGE = 10;
 
     /**
-     * @var string
-     */
-    protected $id;
-
-    /**
      * @var EloquentDataProvider
      */
     protected $dataProvider;
@@ -38,11 +33,6 @@ class Grid
      * @var bool
      */
     protected $useFilters = true;
-
-    /**
-     * @var string
-     */
-    protected $filterUrl = '';
 
     /**
      * @var bool
@@ -95,6 +85,11 @@ class Grid
     protected $rowsFormAction = '';
 
     /**
+     * @var string
+     */
+    protected $filtersFormAction = '';
+
+    /**
      * @var bool
      */
     protected $useSendButtonAnyway = false;
@@ -135,14 +130,25 @@ class Grid
     protected $tableSmall = true;
 
     /**
+     * @var string
+     */
+    protected $id;
+
+    /**
      * @var bool
      */
     protected $pjax = true;
 
     /**
+     * @var string
+     */
+    protected $filterUrl = '';
+
+    /**
      * @var array
      */
     protected $toolbar;
+
     /**
      * Grid constructor.
      * @param array $config
@@ -181,10 +187,10 @@ class Grid
         return view('grid_view::grid', [
             'columnObjects' => $this->columnObjects,
             'useFilters' => $this->useFilters,
-            'filterUrl' => $this->filterUrl,
             'paginator' => $this->paginator,
             'title' => $this->title,
             'rowsFormAction' => $this->rowsFormAction,
+            'filtersFormAction' => $this->filtersFormAction,
             'useSendButtonAnyway' => $this->useSendButtonAnyway,
             'searchButtonLabel' => $this->getSearchButtonLabel(),
             'resetButtonLabel' => $this->getResetButtonLabel(),
@@ -194,6 +200,7 @@ class Grid
             'tableHover' => $this->tableHover,
             'tableSmall' => $this->tableSmall,
             'toolbar' => $this->toolbar,
+            'filterUrl' => $this->filterUrl,
             'pjax' => $this->pjax,
             'id' => $this->id,
         ])->render();

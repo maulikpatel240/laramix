@@ -22,10 +22,8 @@ $action = $getActionName;
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
         integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
-
     <!-- plugin css-->
     <link href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('plugins/dependent-dropdown/css/dependent-dropdown.min.css') }}" rel="stylesheet"
@@ -148,7 +146,7 @@ $action = $getActionName;
                                     class="fas fa-bars"></i></a>
                         </li>
                         <li class="nav-item d-none d-md-block">
-                            <a href="#" class="nav-link">Home</a>
+                            <a href="" class="nav-link">Home</a>
                         </li>
                     </ul>
 
@@ -183,20 +181,10 @@ $action = $getActionName;
                                 </li>
                             </ul>
                         </li>
-                        <!-- TODO tackel in v4.1 -->
-                        <!-- <li class="nav-item">
-                                                                            <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                                                                            <i class="fas fa-expand-arrows-alt"></i>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="nav-item">
-                                                                            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                                                                            <i class="fas fa-th-large"></i>
-                                                                            </a>
-                                                                        </li> -->
                     </ul>
                 </div>
             </nav>
+
             <!-- Main Sidebar Container -->
             <aside class="main-sidebar sidebar-bg-dark sidebar-color-primary shadow">
                 <div class="brand-container">
@@ -210,19 +198,13 @@ $action = $getActionName;
                 <!-- Sidebar -->
                 <div class="sidebar">
                     <nav class="mt-2">
+                        <!-- Sidebar Menu -->
                         <?php
-                        // $modules = Modules::where(['menu_id' => 0, 'parent_menu_id' => 0, 'parent_submenu_id' => 0])->where('title', '!=', '')->get();
-                        // if($modules){
-                        //     foreach ($modules as $key => $value){
-
-                        //$sideMenu[] = '<li class="nav-header">'.$value['title'].'</li>';
-
                         $menus = Modules::where(['type' => 'Menu', 'is_active' => '1', 'panel' => 'Backend'])
                             ->where('title', '!=', '')
                             ->orderBy('menu_position', 'asc')
                             ->get()
                             ->toArray();
-
                         $sideMenu = '';
                         if ($menus) {
                             foreach ($menus as $key_menu => $value_menu) {
@@ -267,34 +249,34 @@ $action = $getActionName;
                                             ->orderBy('submenu_position', 'asc')
                                             ->get()
                                             ->toArray();
-                                        // if ($subsubmenu) {
-                                        //     $childInMenu .= '<ul class="nav nav-treeview">';
-                                        //     foreach ($subsubmenu as $key_subsubmenu => $value_subsubmenu) {
-                                        //         if ($value_subsubmenu['controller'] && $value_subsubmenu['action'] == 'index') {
-                                        //             $url_childInmenu = $value_subsubmenu['controller'];
-                                        //         } elseif ($value_subsubmenu['controller'] && $value_subsubmenu['action'] != 'index') {
-                                        //             $url_childInmenu = $value_subsubmenu['controller'] . '/' . $value_subsubmenu['action'];
-                                        //         } else {
-                                        //             $url_childInmenu = false;
-                                        //         }
-                                        //         $active_childInmenu = '';
-                                        //         if ($url_childInmenu && $controller == $value_subsubmenu['controller'] && $action == $value_subsubmenu['action']) {
-                                        //             $active_sidemenu = 'active';
-                                        //             $active_childmenu = 'active';
-                                        //             $active_childInmenu = 'active';
-                                        //             $nav_open_sidemenu = 'menu-open menu-is-open';
-                                        //         }
-                                        //         if (!empty(checkaccess($value_subsubmenu['action'], $value_subsubmenu['controller']))) {
-                                        //             $childInMenutitle = '<i class="nav-icon ' . $value_subsubmenu['icon'] . '"></i><p>' . $value_subsubmenu['title'] . '</p>';
-                                        //             $childInMenu .= '<li class="nav-item"><a href="' . url('/admin') . '/' . $url_childInmenu . '" class="nav-link ' . $active_childInmenu . '">' . $childInMenutitle . '</a></li>';
-                                        //         }
-                                        //     }
-                                        //     $childInMenu .= '</ul>';
-                                        //     $iconchild .= '<i class="end fas fa-angle-right"></i>';
-                                        // }
+                                        if ($subsubmenu) {
+                                            $childInMenu .= '<ul class="nav nav-treeview">';
+                                            foreach ($subsubmenu as $key_subsubmenu => $value_subsubmenu) {
+                                                if ($value_subsubmenu['controller'] && $value_subsubmenu['action'] == 'index') {
+                                                    $url_childInmenu = $value_subsubmenu['controller'];
+                                                } elseif ($value_subsubmenu['controller'] && $value_subsubmenu['action'] != 'index') {
+                                                    $url_childInmenu = $value_subsubmenu['controller'] . '/' . $value_subsubmenu['action'];
+                                                } else {
+                                                    $url_childInmenu = false;
+                                                }
+                                                $active_childInmenu = '';
+                                                if ($url_childInmenu && $controller == $value_subsubmenu['controller'] && $action == $value_subsubmenu['action']) {
+                                                    $active_sidemenu = 'active';
+                                                    $active_childmenu = 'active';
+                                                    $active_childInmenu = 'active';
+                                                    $nav_open_sidemenu = 'menu-open menu-is-open';
+                                                }
+                                                if (!empty(checkaccess($value_subsubmenu['action'], $value_subsubmenu['controller']))) {
+                                                    $childInMenutitle = '<i class="nav-icon ' . $value_subsubmenu['icon'] . '"></i><p>' . $value_subsubmenu['title'] . '</p>';
+                                                    $url_childInmenu = $url_childmenu ? url('/admin') . '/' . $url_childInmenu : 'javascript:;';
+                                                    $childInMenu .= '<li class="nav-item"><a href="' . $url_childInmenu . '" class="nav-link ' . $active_childInmenu . '">' . $childInMenutitle . '</a></li>';
+                                                }
+                                            }
+                                        }
                                         if (!empty(checkaccess($value_submenu['action'], $value_submenu['controller']))) {
                                             $childMenutitle = '<i class="nav-icon ' . $value_submenu['icon'] . '"></i><p>' . $value_submenu['title'] . $iconchild . '</p>';
-                                            $childMenu .= '<li class="nav-item"><a href="' . url('/admin') . '/' . $url_childmenu . '" class="nav-link ' . $active_childmenu . '">' . $childMenutitle . '</a>' . $childInMenu . '</li>';
+                                            $url_childmenu = $url_childmenu ? url('/admin') . '/' . $url_childmenu : 'javascript:;';
+                                            $childMenu .= '<li class="nav-item"><a href="' . $url_childmenu . '" class="nav-link ' . $active_childmenu . '">' . $childMenutitle . '</a>' . $childInMenu . '</li>';
                                             $totalchildMenu[] = true;
                                         }
                                     }
@@ -306,28 +288,21 @@ $action = $getActionName;
                                         $nav_open_sidemenu = 'menu-open menu-is-open';
                                     }
                                 }
-                                // echo checkaccess($value_menu['action'], $value_menu['controller']);
                                 if (!empty(checkaccess($value_menu['action'], $value_menu['controller']))) {
                                     $sideMenutitle = '<i class="nav-icon ' . $value_menu['icon'] . '"></i><p>' . $value_menu['title'] . $icon . '</p>';
-                                    $sideMenu .= '<li class="nav-item ' . $nav_open_sidemenu . '"><a href="' . url('/admin') . '/' . $url . '" class="nav-link ' . $active_sidemenu . '">' . $sideMenutitle . '</a>' . $childMenu . '</li>';
+                                    $url = $url ? url('/admin') . '/' . $url : 'javascript:;';
+                                    $sideMenu .= '<li class="nav-item ' . $nav_open_sidemenu . '"><a href="' . $url . '" class="nav-link ' . $active_sidemenu . '">' . $sideMenutitle . '</a>' . $childMenu . '</li>';
                                 } else {
                                     if ($totalchildMenu || $value_menu['controller'] == 'dashboard') {
                                         $sideMenutitle = '<i class="nav-icon ' . $value_menu['icon'] . '"></i><p>' . $value_menu['title'] . $icon . '</p>';
-                                        $sideMenu .= '<li class="nav-item ' . $nav_open_sidemenu . '"><a href="' . url('/admin') . '/' . $url . '" class="nav-link ' . $active_sidemenu . '">' . $sideMenutitle . '</a>' . $childMenu . '</li>';
+                                        $url = $url ? url('/admin') . '/' . $url : 'javascript:;';
+                                        $sideMenu .= '<li class="nav-item ' . $nav_open_sidemenu . '"><a href="' . $url . '" class="nav-link ' . $active_sidemenu . '">' . $sideMenutitle . '</a>' . $childMenu . '</li>';
                                     }
                                 }
                             }
                         }
-
-                        //     }
-                        // }
-                        // echo Nav::widget([
-                        //     'options' => ['class' => 'nav nav-pills nav-sidebar flex-column', 'data-widget' => "treeview", 'role' => "menu", 'data-accordion' => "false"],
-                        //     'items' => $sideMenu,
-                        // ]);
-
                         ?>
-                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-lte-toggle="treeview" role="menu"
                             data-accordion="false">
                             {!! $sideMenu !!}
                         </ul>
@@ -335,7 +310,6 @@ $action = $getActionName;
                 </div>
                 <!-- /.sidebar -->
             </aside>
-            <!-- Main Sidebar Container -->
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
@@ -351,28 +325,20 @@ $action = $getActionName;
             </div>
             <!-- /.content-wrapper -->
 
-
-            <!-- Control Sidebar -->
-            <aside class="control-sidebar control-sidebar-dark">
-                <!-- Control sidebar content goes here -->
-            </aside>
-            <!-- /.control-sidebar -->
         </div>
         @yield('modal')
         {{-- @include('grid_view::modal.container') --}}
         <!-- ./wrapper -->
         @stack('before-scripts')
         <!-- common js -->
-        {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
-
-        <script src="{{ asset('js/bootstrap.bundle.min.js') }}" defer></script>
+        <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/jquery.form.min.js') }}" defer></script>
         <script src="{{ asset('js/adminlte.min.js') }}" type="text/javascript"></script>
         <!-- plugin js -->
         <script type="text/javascript" src="{{ asset('plugins/jsvalidation/jsvalidation.js') }}"></script>
         <script src="{{ asset('plugins/dependent-dropdown/js/dependent-dropdown.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('plugins/jquery-pjax/jquery.pjax.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('plugins/sweetalert2/sweetalert2.all.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('plugins/sweetalert2/js/sweetalert2.all.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('plugins/inputmask/jquery.inputmask.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('plugins/handlebars/handlebars.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}" type="text/javascript"></script>
@@ -387,17 +353,6 @@ $action = $getActionName;
         @stack('after-scripts')
         @yield('pagescript')
     @endauth
-    <script type="text/javascript">
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $(document).ready(function() {
-            $(":input").inputmask();
-            // Inputmask().mask(document.querySelectorAll("input"));
-        });
-    </script>
     <script>
         const SELECTOR_SIDEBAR = '.sidebar'
         const Default = {
@@ -417,6 +372,18 @@ $action = $getActionName;
             }
         })
     </script>
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $(document).ready(function() {
+            $(":input").inputmask();
+            // Inputmask().mask(document.querySelectorAll("input"));
+        });
+    </script>
+
     @stack('grid_js')
 </body>
 
